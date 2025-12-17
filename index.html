@@ -1,244 +1,429 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naleśniki Inaczej | Rumia - Najlepsze naleśniki na wynos</title>
-    <meta name="description" content="Naleśniki Inaczej w Rumii - świeże naleśniki słodkie i wytrawne. Szybki lunch, takeaway dla studentów i rodzin. Otwarte od 7:30!">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --beż: #F5F5DC;
-            --pomarańcz: #FF8C00;
-            --zieleń: #228B22;
-            --biały: #FFFFFF;
-            --szary: #666;
-            --ciemny: #333;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: var(--ciemny); background: var(--beż); }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        
-        /* Hero Section */
-        .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyMCIgaGVpZ2h0PSI4MDAiIHZpZXdCb3g9IjAgMCAxOTIwIDgwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjE5MjAiIGhlaWdodD0iODAwIiBmaWxsPSIjRkY4QzAwIi8+CjxjaXJjbGUgY3g9IjEwMDAiIGN5PSI0MDAiIHI9IjMwMCIgZmlsbD0iI0ZGNUZEQyIvPgo8cGF0aCBkPSJNODAwIDQwMGw4MCAxMjAgMTIwIC0xMjAgMjQwIDI0MCIgc3Ryb2tlPSIjMjI4QjIyIiBzdHJva2Utd2lkdGg9IjIwIiBmaWxsPSJub25lIi8+Cjwvc3ZnPgo='); background-size: cover; height: 100vh; display: flex; align-items: center; text-align: center; color: white; }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-        .hero p { font-size: clamp(1.2rem, 3vw, 1.8rem); margin-bottom: 2rem; }
-        .cta { background: var(--pomarańcz); color: white; padding: 1rem 2rem; font-size: 1.2rem; font-weight: 600; border: none; border-radius: 50px; text-decoration: none; display: inline-block; transition: all 0.3s; box-shadow: 0 5px 15px rgba(255,140,0,0.4); }
-        .cta:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255,140,0,0.6); }
-        
-        /* Sekcje */
-        section { padding: 80px 0; }
-        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 3rem; color: var(--pomarańcz); position: relative; }
-        h2::after { content: ''; display: block; width: 80px; height: 4px; background: var(--zieleń); margin: 1rem auto; }
-        
-        /* Menu */
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .menu-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s; }
-        .menu-card:hover { transform: translateY(-10px); }
-        .menu-card img { width: 100%; height: 200px; object-fit: cover; }
-        .menu-card h3 { padding: 1.5rem; font-size: 1.5rem; color: var(--pomarańcz); }
-        .menu-card p { padding: 0 1.5rem 1.5rem; color: var(--szary); }
-        .price { font-size: 1.8rem; font-weight: 700; color: var(--zieleń); padding: 0 1.5rem 1.5rem; }
-        .add-btn { background: var(--zieleń); color: white; border: none; width: 100%; padding: 1rem; font-size: 1.1rem; cursor: pointer; transition: background 0.3s; }
-        .add-btn:hover { background: #1e7a1e; }
-        
-        /* Promocje */
-        .promotions { background: var(--pomarańcz); color: white; }
-        .promo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-        .promo-item { text-align: center; padding: 2rem; background: rgba(255,255,255,0.2); border-radius: 15px; }
-        .promo-price { font-size: 3rem; font-weight: 700; color: var(--bież); }
-        
-        /* Kontakt */
-        .contact { background: var(--ciemny); color: white; text-align: center; }
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
-        .contact-item i { font-size: 3rem; color: var(--pomarańcz); margin-bottom: 1rem; }
-        
-        /* Formularz */
-        .order-form { background: white; padding: 2rem; border-radius: 15px; max-width: 500px; margin: 2rem auto; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .form-group { margin-bottom: 1.5rem; }
-        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
-        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 1rem; border: 2px solid #eee; border-radius: 10px; font-size: 1rem; }
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--pomarańcz); }
-        
-        /* Footer */
-        footer { background: var(--ciemny); color: white; text-align: center; padding: 2rem; }
-        .sanepid { color: var(--zieleń); font-weight: 600; }
-        
-        /* Mobile */
-        @media (max-width: 768px) {
-            .hero { padding: 2rem 0; height: 80vh; }
-            section { padding: 40px 0; }
-            .menu-grid { grid-template-columns: 1fr; }
-        }
-        
-        /* Animacje */
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        section { animation: fadeInUp 0.8s ease-out; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naleśniki Inaczej | Rumia - Najlepsze naleśniki takeaway</title>
+  <meta name="description" content="Nowoczesne naleśniki Rumia - słodkie, wytrawne, boxy, zero waste. Śniadania, lunch, promocje.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+:root {
+  --beż: #F5F5DC;
+  --pomarańcz: #FF8C00;
+  --zieleń: #228B22;
+  --biały: #FFFFFF;
+  --szary: #666;
+  --ciemny: #333;
+}
+* { margin:0; padding:0; box-sizing: border-box; }
+body { font-family: 'Montserrat', sans-serif; line-height:1.6; color:var(--ciemny); background: var(--beż);}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+/* HERO */
+.hero { background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.25)), url('https://images.unsplash.com/photo-1519864600265-abb244a92b31?fit=cover&w=1200&q=80'); background-size: cover; background-position:center; height: 90vh; display: flex; align-items: center; text-align: center; color: white; }
+.hero h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; margin-bottom: 1.1rem; text-shadow: 2px 2px 5px rgba(0,0,0,0.45); }
+.hero p { font-size: clamp(1.2rem, 3vw, 1.7rem); margin-bottom: 2rem; text-shadow:1px 1px 5px #0002; }
+.cta { background: var(--pomarańcz); color: white; padding: 1rem 2rem; font-size: 1.18rem; font-weight: 600; border: none; border-radius: 40px; text-decoration: none; display: inline-block; transition: all 0.28s; box-shadow: 0 5px 15px rgba(255,140,0,0.18);}
+.cta:hover { background: #ff9700; transform: translateY(-2.5px) scale(1.04); box-shadow: 0 10px 25px rgba(255,140,0,0.3);}
+section { padding: 80px 0 60px 0;}
+h2 { font-size: 2.1rem; text-align: center; margin-bottom: 2.2rem; color: var(--pomarańcz); position: relative; }
+h2::after { content: ''; display: block; width: 63px; height: 4px; background: var(--zieleń); margin: 1rem auto; border-radius:1px;}
+.section-desc { color: #666; text-align:center; font-size:1.11rem; margin-bottom:1.9rem; font-style:italic;}
+/* MENU GRID */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(295px, 1fr));
+  gap: 2rem;
+}
+.menu-card {
+  background:#fff;
+  border-radius: 19px;
+  overflow: hidden;
+  box-shadow: 0 5px 24px rgba(0,0,0,0.08);
+  padding: 1.15rem 1.2rem 1.18rem 1.14rem;
+  margin-bottom: 0.8em;
+  min-width: 0;
+  word-break: break-word;
+  transition: transform .23s;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.menu-card:hover {transform:translateY(-5px) scale(1.027);}
+.menu-card h3 {
+  font-size: 1.18rem;
+  color: var(--pomarańcz);
+  margin-bottom: 0.44rem;
+  font-weight: 700;
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:.68em;
+}
+.menu-card .price {
+  color: var(--zieleń);
+  font-size: 1.15em;
+  margin-left: 1em;
+  font-weight: bold;
+}
+.menu-card .badge {
+  display: inline-block;
+  background: #FF8C00;
+  color: #fff;
+  border-radius: 9px;
+  font-size: 0.82em;
+  padding: 0.08em 0.62em;
+  margin-left: .7em;
+  font-weight: 600;
+  letter-spacing:0.03em;
+}
+/* Kombinacje klientów grid */
+.combos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
+  gap:1.4em;
+  margin-top:2em; margin-bottom:2em;
+}
+.combo-card {
+  background: #fffade;
+  border-radius: 13px;
+  box-shadow: 0 3px 16px rgba(150,90,0,0.08);
+  padding: 1.2em 1em 1.05em 1.2em;
+  display: flex; flex-direction:column; justify-content:space-between;
+  min-width: 0; border: 1.5px solid #ffe8c2;
+  font-size: 1.04em; transition:transform 0.16s;
+}
+.combo-card:hover {
+  transform: translateY(-3px) scale(1.029);
+  box-shadow:0 7px 26px rgba(240,180,100,.15);
+}
+.combo-title { font-weight:600; color:#cc8400; font-size:1.12em; margin-bottom:.42em; display:block; }
+.combo-price { color: #228B22; font-weight: 700; font-size:1.13em; margin-bottom:0.2em; }
+.combo-note { color: #888; font-size: 0.98em; font-style: italic;}
+/* Footer & inne */
+footer { background: var(--ciemny); color: white; text-align:center; padding:2rem;}
+.sanepid { color: var(--zieleń); font-weight:600;}
+/* MEDIA QUERIES NA MOBILE */
+@media (max-width: 900px) {
+  .menu-grid { grid-template-columns:1fr 1fr; gap: 1.2em;}
+  .menu-card { padding: 1rem .6rem; font-size:.98em;}
+  .combos-grid { grid-template-columns:1fr 1fr;}
+}
+@media (max-width: 600px) {
+  .menu-grid, .combos-grid { grid-template-columns:1fr; gap:1.07em;}
+  section {padding: 44px 0 22px 0;}
+}
+  </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1><i class="fas fa-utensils"></i> Naleśniki Inaczej</h1>
-            <p>Najlepsze naleśniki w Rumii<br>Świeże składniki • Szybki takeaway • Od 7:30</p>
-            <a href="#menu" class="cta">Zobacz Menu <i class="fas fa-arrow-down"></i></a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1><i class="fas fa-utensils"></i> Naleśniki Inaczej</h1>
+      <p>Nowoczesne naleśniki na słodko i wytrawnie • Rumia<br>Lunch, takeaway, promocje i zero waste<br><span style="font-size:1.1em;">Otwarte od 7:30!</span></p>
+      <a href="#menu" class="cta">Zobacz menu <i class="fas fa-arrow-down"></i></a>
+    </div>
+  </section>
+  <!-- MENU -->
+  <section id="menu">
+    <div class="container">
+      <!-- BESTSELLERY -->
+      <h2>🍯 Bestsellery (Hity sprzedaży)</h2>
+      <p class="section-desc">Najczęściej wybierane i najbardziej polecane przez naszych gości!</p>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <h3>Oreo Deluxe <span class="price">26 zł</span></h3>
+          <p>Naleśnik słodki z mascarpone, Oreo, sosem karmelowym</p>
         </div>
-    </section>
-
-    <!-- Menu -->
-    <section id="menu">
-        <div class="container">
-            <h2>Nasze Naleśniki</h2>
-            <div class="menu-grid">
-                <div class="menu-card">
-                    <div style="background: linear-gradient(45deg, var(--pomarańcz), var(--beż)); height: 200px; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-cookie-bite" style="font-size: 4rem; color: white;"></i>
-                    </div>
-                    <h3>Naleśnik Śniadaniowy</h3>
-                    <p>Jajecznica, szynka, ser żółty, szczypiorek</p>
-                    <div class="price">15 zł</div>
-                    <button class="add-btn" onclick="addToOrder('Naleśnik Śniadaniowy - 15 zł')">Dodaj <i class="fas fa-plus"></i></button>
-                </div>
-                <div class="menu-card">
-                    <div style="background: linear-gradient(45deg, var(--zieleń), #90EE90); height: 200px; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-seedling" style="font-size: 4rem; color: white;"></i>
-                    </div>
-                    <h3>Lunchowy Klasyk</h3>
-                    <p>Kurczak, pieczarki, śmietana, cebula</p>
-                    <div class="price">18 zł</div>
-                    <button class="add-btn" onclick="addToOrder('Lunchowy Klasyk - 18 zł')">Dodaj <i class="fas fa-plus"></i></button>
-                </div>
-                <div class="menu-card">
-                    <div style="background: linear-gradient(45deg, #FF69B4, var(--pomarańcz)); height: 200px; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-heart" style="font-size: 4rem; color: white;"></i>
-                    </div>
-                    <h3>Nutella Dream</h3>
-                    <p>Nutella, banan, bite czekoladowe, lody waniliowe</p>
-                    <div class="price">16 zł</div>
-                    <button class="add-btn" onclick="addToOrder('Nutella Dream - 16 zł')">Dodaj <i class="fas fa-plus"></i></button>
-                </div>
-            </div>
+        <div class="menu-card">
+          <h3>Chipsy Caesar Roll <span class="price">26 zł</span></h3>
+          <p>Naleśnik wytrawny z kurczakiem marynowanym, sałatą, dressing Caesar</p>
         </div>
-    </section>
-
-    <!-- Promocje -->
-    <section class="promotions">
-        <div class="container">
-            <h2 style="color: white;">Promocje Dnia</h2>
-            <div class="promo-grid">
-                <div class="promo-item">
-                    <i class="fas fa-clock"></i>
-                    <div>11:00-14:00</div>
-                    <div class="promo-price">Naleśnik Dnia<br>15 zł</div>
-                </div>
-                <div class="promo-item">
-                    <i class="fas fa-user-graduate"></i>
-                    <div>Studencka</div>
-                    <div class="promo-price">-20%</div>
-                </div>
-                <div class="promo-item">
-                    <i class="fas fa-child"></i>
-                    <div>Środy Dziecięce</div>
-                    <div class="promo-price">Mały naleśnik<br>10 zł</div>
-                </div>
-            </div>
+        <div class="menu-card">
+          <h3>Sweet Classic <span class="price">13 zł</span></h3>
+          <p>Naleśnik słodki ze świeżym cukrem pudrem i masłem</p>
         </div>
-    </section>
-
-    <!-- Zamówienie -->
-    <section>
-        <div class="container">
-            <h2>Zamów Online</h2>
-            <form class="order-form" onsubmit="submitOrder(event)">
-                <div class="form-group">
-                    <label>Imię i nazwisko</label>
-                    <input type="text" id="name" required>
-                </div>
-                <div class="form-group">
-                    <label>Telefon</label>
-                    <input type="tel" id="phone" required>
-                </div>
-                <div class="form-group">
-                    <label>Zamówienie</label>
-                    <textarea id="order" rows="4" placeholder="Np. 2x Naleśnik Śniadaniowy, 1x Napój" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Odbiór</label>
-                    <input type="datetime-local" id="pickup" required>
-                </div>
-                <button type="submit" class="cta" style="width: 100%; margin-top: 1rem;">Wyślij Zamówienie <i class="fas fa-paper-plane"></i></button>
-            </form>
+        <div class="menu-card">
+          <h3>Kurczak Tikka Roll <span class="price">24 zł</span></h3>
+          <p>Naleśnik wytrawny z kurczakiem tikka masala, cebulą, coriandrem</p>
         </div>
-    </section>
-
-    <!-- Kontakt -->
-    <section class="contact">
-        <div class="container">
-            <h2>Kontakt</h2>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>Rumia, ul. Sobieskiego 123</div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <div>+48 123 456 789</div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-clock"></i>
-                    <div>Pn-Nd 7:30-18:00</div>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-whatsapp"></i>
-                    <div>Zamów przez WhatsApp</div>
-                </div>
-            </div>
+      </div>
+      <!-- SŁODKIE -->
+      <h2 style="margin-top:3em;">🍓 Słodkie (Klasyczne)</h2>
+      <p class="section-desc">
+        Idealne na dobry początek dnia lub słodką przerwę. Wszystkie z prawdziwym masłem!
+      </p>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <h3>Kinder Dream <span class="price">25 zł</span></h3>
+          <p>Kinder bueno, mleczna czekolada, orzechy laskowe</p>
         </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Naleśniki Inaczej | <span class="sanepid">Sanepid OK • HACCP</span> | Rumia</p>
+        <div class="menu-card">
+          <h3>Truskawka & Mascarpone <span class="price">29 zł</span></h3>
+          <p>Świeże truskawki, mascarpone, miód</p>
         </div>
-    </footer>
-
-    <script>
-        let currentOrder = [];
-        
-        function addToOrder(item) {
-            currentOrder.push(item);
-            document.getElementById('order').value = currentOrder.join('\n');
-            // Animacja
-            const btn = event.target;
-            btn.style.transform = 'scale(0.95)';
-            setTimeout(() => btn.style.transform = 'scale(1)', 150);
-        }
-        
-        function submitOrder(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const order = document.getElementById('order').value;
-            const pickup = document.getElementById('pickup').value;
-            
-            // Symulacja wysłania (w rzeczywistości: email/SMS/WhatsApp API)
-            alert(`Dziękujemy ${name}! Twoje zamówienie "${order}" jest przyjęte na ${new Date(pickup).toLocaleString('pl-PL')}. Skontaktujemy się! 📞`);
-            // Tutaj integracja z WhatsApp lub email
-            window.open(`https://wa.me/48123456789?text=Cześć! Zamówienie: ${order} na ${pickup}`);
-            
-            e.target.reset();
-            currentOrder = [];
-        }
-        
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-    </script>
+        <div class="menu-card">
+          <h3>Bananowy Fun <span class="price">21 zł</span></h3>
+          <p>Banan, czekolada, orzechy kokosowe</p>
+        </div>
+        <div class="menu-card">
+          <h3>Królewna Cytryna <span class="price">28 zł</span></h3>
+          <p>Cytryna, mascarpone, śmietana, zest cytryny</p>
+        </div>
+        <div class="menu-card">
+          <h3>Nutella & Owoce <span class="price">22 zł</span></h3>
+          <p>Nutella, świeże owoce (zależnie od sezonu)</p>
+        </div>
+      </div>
+      <!-- WYTRAWNE -->
+      <h2 style="margin-top:3em;">🥬 Wytrawne (Stałe)</h2>
+      <p class="section-desc">
+        Warianty wytrawne dla miłośników serów, mięsa oraz warzyw. Idealnie sycące!
+      </p>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <h3>Szpinak & Feta <span class="price">27 zł</span></h3>
+          <p>Szpinak, feta, cebula, oliwa z oliwek</p>
+        </div>
+        <div class="menu-card">
+          <h3>Ser & Szynka <span class="price">22 zł</span></h3>
+          <p>Ser żółty, szynka, pomidory, rukola <span class="badge">Klasyk</span></p>
+        </div>
+        <div class="menu-card">
+          <h3>Jajko & Bekon <span class="price">25 zł</span></h3>
+          <p>Jajko sadzone, bekon, ser cheddar</p>
+        </div>
+        <div class="menu-card">
+          <h3>Kurczak BBQ Roll <span class="price">28 zł</span></h3>
+          <p>Kurczak BBQ, sałata, cheddar, cebula czerwona</p>
+        </div>
+        <div class="menu-card">
+          <h3>Tuńczyk & Avocado <span class="price">31 zł</span></h3>
+          <p>Tuńczyk, avocado, limonka, sezam</p>
+        </div>
+      </div>
+      <!-- SEZONOWE -->
+      <h2 style="margin-top:3em;">🌱 Sezonowe (Limitowane)</h2>
+      <p class="section-desc">
+        Oferty zmienne, w zależności od sezonu – pytaj o pozycje dostępne dziś!
+      </p>
+      <div class="menu-grid">
+        <!-- Wiosna -->
+        <div class="menu-card">
+          <h3>Botwinka & Jajko <span class="price">29 zł</span></h3>
+          <p>Botwinka, jajko sadzone, ser żółty <span class="badge">WIOSNA IV–V</span></p>
+        </div>
+        <!-- Lato -->
+        <div class="menu-card">
+          <h3>Cukinia & Feta <span class="price">30 zł</span></h3>
+          <p>Grillowana cukinia, feta, mięta <span class="badge">LATO VI–VIII</span></p>
+        </div>
+        <div class="menu-card">
+          <h3>Shake ZERO <span class="price">9 zł</span></h3>
+          <p>Bezglutenowy (truskawka/banan/czekolada), zimny, orzeźwiający <span class="badge">LATO VI–VIII</span></p>
+        </div>
+      </div>
+      <!-- WEGAŃSKIE & SPECJALNE -->
+      <h2 style="margin-top:3em;">🌿 Wegańskie & specjalne</h2>
+      <p class="section-desc">Propozycje bez nabiału i mięsa, w 100% roślinne.</p>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <h3>Veggies & Hummus <span class="price">24 zł</span></h3>
+          <p>Hummus, rukola, pomidory, ogórek, cebula czerwona</p>
+        </div>
+      </div>
+      <!-- MINI BOX & ROLADKI -->
+      <h2 style="margin-top:3em;">📦 Mini box & roladki</h2>
+      <p class="section-desc">Zestawy na wynos oraz szybkie przekąski – idealne do pracy, szkoły i na piknik!</p>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <h3>Mini Pancake Box <span class="price">14 zł</span></h3>
+          <p>3 małe naleśniki słodkie (na wybór)</p>
+        </div>
+        <div class="menu-card">
+          <h3>Roladki Dnia <span class="price">7 zł / 2 szt.</span></h3>
+          <p>Naleśnik zawinięty: serek + owoce lub warzywa</p>
+        </div>
+        <div class="menu-card">
+          <h3>Crepe Bites <span class="price">15 zł</span></h3>
+          <p>Kawałki naleśnika w pudełku: kosteczki słodkie/wytrawne</p>
+        </div>
+        <div class="menu-card">
+          <h3>Weekend Box <span class="price">85 zł</span></h3>
+          <p>6 naleśników (mieszane) + 4 sosy premium</p>
+        </div>
+        <div class="menu-card">
+          <h3>Daily Combo <span class="price">32 zł</span></h3>
+          <p>1 słodki + 1 wytrawny + napój <span class="badge">NOWOŚĆ! zamiast 58 zł</span></p>
+        </div>
+      </div>
+      <!-- NAPOJE -->
+      <h2 style="margin-top:3em;">🍵 Napoje</h2>
+      <p class="section-desc">Wszystkie napoje przygotowywane na bieżąco – kawa świeżo mielona, soki wyciskane 100%.</p>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <h3>Cappuccino <span class="price">9 zł</span></h3>
+          <p>Kawa, mleko, pianka <span class="badge">BESTSELLER</span></p>
+        </div>
+        <div class="menu-card">
+          <h3>Espresso <span class="price">8 zł</span></h3>
+          <p>Kawa naturalna, mocna</p>
+        </div>
+        <div class="menu-card">
+          <h3>Flat White <span class="price">10 zł</span></h3>
+          <p>Kawa, mleko, minimalna pianka</p>
+        </div>
+        <div class="menu-card">
+          <h3>Latte <span class="price">10 zł</span></h3>
+          <p>Kawa, mleko rozgrzane</p>
+        </div>
+        <div class="menu-card">
+          <h3>Americano <span class="price">9 zł</span></h3>
+          <p>Kawa długa</p>
+        </div>
+        <div class="menu-card">
+          <h3>Pomarańcza Sok <span class="price">12 zł</span></h3>
+          <p>100% sok naturalny <span class="badge">BESTSELLER</span></p>
+        </div>
+        <div class="menu-card">
+          <h3>Jabłko Sok <span class="price">12 zł</span></h3>
+          <p>100% sok naturalny</p>
+        </div>
+        <div class="menu-card">
+          <h3>Cytryna Sok <span class="price">12 zł</span></h3>
+          <p>100% sok naturalny</p>
+        </div>
+        <div class="menu-card">
+          <h3>Shake Klasyczny <span class="price">11 zł</span></h3>
+          <p>Mleko + owoce/czekolada</p>
+        </div>
+        <div class="menu-card">
+          <h3>Shake ZERO <span class="price">9 zł</span></h3>
+          <p>Bezglutenowy – lato (VI–VIII)</p>
+        </div>
+        <div class="menu-card">
+          <h3>Woda Gazowana <span class="price">6 zł</span></h3>
+          <p>Still/Sparkling</p>
+        </div>
+        <div class="menu-card">
+          <h3>Herbata <span class="price">7 zł</span></h3>
+          <p>Różne rodzaje</p>
+        </div>
+      </div>
+      <!-- SOSY PREMIUM -->
+      <h2 style="margin-top:3em;">🍯 Sosy Premium <span style="font-size:1.2rem;">(+4 zł)</span></h2>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <h3>Solony Karmel</h3>
+          <p>Słonkawy, toffi-owy</p>
+        </div>
+        <div class="menu-card">
+          <h3>Pistacja</h3>
+          <p>Kremowy, orzechowy</p>
+        </div>
+        <div class="menu-card">
+          <h3>Caesar</h3>
+          <p>Kremowy, czosnkowy</p>
+        </div>
+        <div class="menu-card">
+          <h3>Pesto</h3>
+          <p>Bazylia, czosnek, orzechy</p>
+        </div>
+      </div>
+      <!-- SOSY KLASYCZNE -->
+      <h2 style="margin-top:3em;">🎁 Sosy Klasyczne <span style="font-size:1.2rem;">(+3 zł)</span></h2>
+      <ul style="text-align:left; list-style:disc; max-width:490px; margin:0 auto 3em; font-size:1.1em;">
+        <li>Cukier puder</li>
+        <li>Cukier brązowy</li>
+        <li>Miód</li>
+        <li>Masło</li>
+      </ul>
+      <!-- ZERO WASTE -->
+      <h2 style="margin-top:2em;">🟢 Zero Waste Menu (Drugie życie naleśnika)</h2>
+      <p class="section-desc">Drugie życie naszych naleśników – pomysły na wykorzystanie resztek. Promka -20% w Środę Ratowania!</p>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <h3>Lasagne Naleśnikowa <span class="price">18 zł</span></h3>
+          <p>Naleśniki z wczoraj, sos pomidorowy, beszamel, farsz</p>
+        </div>
+        <div class="menu-card">
+          <h3>Makaron Naleśnikowy <span class="price">16 zł</span></h3>
+          <p>Naleśniki krajane, sos do wyboru, parmezan</p>
+        </div>
+        <div class="menu-card">
+          <h3>Roladki Dnia (Zero Waste) <span class="price">7 zł / 2 szt.</span></h3>
+          <p>Resztki z wczoraj + nowe nadzienie</p>
+        </div>
+        <div class="menu-card">
+          <h3>Chipsy Naleśnikowe <span class="price">8 zł</span></h3>
+          <p>Wysuszone naleśniki z przyprawami</p>
+        </div>
+      </div>
+      <p style="text-align:right; font-size:0.95em; margin-top:-1em;"><em>Promocja: -20% na Zero Waste pozycje w ŚRODĘ RATOWANIA NALEŚNIKA 🌱</em></p>
+    </div>
+  </section>
+  <!-- Najczęstsze kombinacje klientów -->
+  <section id="client-favorites">
+    <div class="container">
+      <h2>🎯 Najczęstsze kombinacje klientów</h2>
+      <p class="section-desc">Inspiracje na sprawdzone zestawy. Spróbuj jak setki naszych klientów!</p>
+      <div class="combos-grid">
+        <div class="combo-card">
+          <span class="combo-title">Oreo + Pomarańcza Sok + Sos Karmel</span>
+          <span class="combo-price">42 zł</span>
+          <span class="combo-note">Premium combo</span>
+        </div>
+        <div class="combo-card">
+          <span class="combo-title">Chipsy Caesar + Cappuccino + Sos Caesar</span>
+          <span class="combo-price">39 zł</span>
+          <span class="combo-note">Klasyk biura</span>
+        </div>
+        <div class="combo-card">
+          <span class="combo-title">Sweet Classic + Cappuccino</span>
+          <span class="combo-price">22 zł</span>
+          <span class="combo-note">⭐ Promocja rano</span>
+        </div>
+        <div class="combo-card">
+          <span class="combo-title">Daily Combo (słodki + wytrawny + napój)</span>
+          <span class="combo-price">32 zł</span>
+          <span class="combo-note">NOWOŚĆ! Bestseller</span>
+        </div>
+        <div class="combo-card">
+          <span class="combo-title">Mini Box + Shake</span>
+          <span class="combo-price">25 zł</span>
+          <span class="combo-note">Dla dzieci</span>
+        </div>
+        <div class="combo-card">
+          <span class="combo-title">Kurczak Tikka + Sok + Sosy</span>
+          <span class="combo-price">40 zł</span>
+          <span class="combo-note">Lato premium</span>
+        </div>
+        <div class="combo-card">
+          <span class="combo-title">Ser & Szynka + Cappuccino</span>
+          <span class="combo-price">31 zł</span>
+          <span class="combo-note">🆕 Lunch pracownika</span>
+        </div>
+        <div class="combo-card">
+          <span class="combo-title">Veggies & Hummus + Sok</span>
+          <span class="combo-price">36 zł</span>
+          <span class="combo-note">🆕 Wegańska opcja</span>
+        </div>
+        <div class="combo-card">
+          <span class="combo-title">Cukinia & Feta + Shake ZERO</span>
+          <span class="combo-price">39 zł</span>
+          <span class="combo-note">🆕 Lato orzeźwiające</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Naleśniki Inaczej | <span class="sanepid">Sanepid OK • HACCP</span> | Rumia</p>
+    </div>
+  </footer>
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
 </body>
 </html>
